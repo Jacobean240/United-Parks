@@ -1,0 +1,97 @@
+Marketing Data Quality Report - Detailed Analysis
+Overall Assessment
+Your dataset receives an 88/100 quality score, which is quite good but indicates some areas needing attention. With 90,480 rows covering a full year (52 weeks) of marketing data across 12 parks, this is a substantial dataset worth cleaning properly.
+Critical Business Logic Issues
+1. Impossible Click-Through Rates (349 rows)
+Problem: Clicks > Impressions
+This is mathematically impossible - you can't have more clicks than impressions
+Root Cause: Likely data collection/integration issues between platforms
+Impact: Inflates CTR calculations and skews performance analysis
+Example from sample: Some rows show very high click counts relative to impressions
+2. Impossible Conversion Rates (557 rows)
+Problem: Conversions > Clicks
+You can't convert more people than actually clicked
+Root Cause: Possible attribution model conflicts or data lag between systems
+Impact: Creates unrealistic conversion rate calculations
+Recommendation: Review data pipeline timing and attribution windows
+
+
+Performance Metrics Deep Dive
+Click-Through Rate (CTR) Issues
+Mean: 3.53% vs Median: 0.95%
+Maximum: 364.77% (clearly impossible)
+8,919 outliers detected (nearly 10% of data)
+Analysis: The large gap between mean and median suggests right-skewed distribution with extreme outliers pulling the average up
+Conversion Rate Problems
+Mean: 4.81% vs Median: 0.73%
+Maximum: 7,085.25% (astronomically impossible)
+10,257 outliers (over 11% of data)
+Severity: This is your most problematic metric
+Return on Ad Spend (ROAS)
+Mean: 9.63x vs Median: 3.95x
+Range: 0.01x to 381.67x
+9,366 outliers detected
+Assessment: While high ROAS is good, 381x suggests data errors rather than performance
+Cost Per Acquisition (CPA)
+Mean: $121.63 vs Median: $43.97
+Maximum: $13,480.85 (extremely high)
+9,603 outliers detected
+Impact: Makes budget planning and optimization difficult
+Missing Data Analysis
+Platform Data Gap
+15,600 missing values (17.2%)
+Pattern: Likely from traditional media channels (TV, Radio, Direct Mail)
+From sample data: Traditional channels show blank Platform fields, which is expected
+Recommendation: Consider creating "N/A" or channel-specific platform codes
+Data Structure Overview
+Coverage Scope
+12 Parks: Good geographic/property diversity
+5 Segments: Local, Same Day, Drive & Overnight, Domestic, International
+9 Channels: Mix of digital and traditional
+9 Platforms: Various advertising platforms
+3 Funnel Stages: Awareness, Consideration, Conversion
+🔧 Recommended Actions
+Immediate Priorities
+Fix Business Logic Issues
+
+
+Investigate 349 rows where Clicks > Impressions
+Review 557 rows where Conversions > Clicks
+Check data collection timing and attribution models
+Outlier Investigation
+
+
+Focus on conversion rate outliers first (highest count)
+Examine top 1% of each metric for data entry errors
+Consider capping extreme values at reasonable thresholds
+Platform Data Handling
+
+
+Decide on consistent approach for traditional media platform coding
+Create data dictionary for platform standardization
+Medium-Term Improvements
+Data Pipeline Review
+
+
+Implement validation rules to prevent impossible metrics
+Add automated quality checks before data ingestion
+Create alerts for extreme outliers
+Performance Analysis
+
+
+Focus analysis on cleaned dataset
+Use median values for more robust insights
+Segment analysis by park and channel type
+What This Means for Your Analysis
+Positive Aspects
+88% quality score indicates most of your data is reliable
+Complete date coverage for full year analysis
+Rich dimensional data across parks, segments, and channels
+Comprehensive funnel tracking from awareness to conversion
+Caution Areas
+Don't trust extreme values without validation
+Use median metrics for more realistic benchmarking
+Segment analysis may be more reliable than aggregate totals
+Traditional media attribution may need separate analysis approach
+The cleaned dataset should be significantly more reliable for strategic decision-making and budget optimizations
+

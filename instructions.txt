@@ -1,0 +1,36 @@
+United Parks & Resorts Case Study: Director, Media
+
+Scenario:
+You’ve recently joined United Parks & Resorts as the Director of Media. The company is undergoing a transformation to elevate its Paid Media capabilities. The company is focused on driving ticket sales and increasing guest engagement through a full-funnel media strategy that spans digital and traditional channels. As the incoming Director of Media, you are tasked with evaluating the effectiveness of current media investments and proposing a strategy to optimize performance across all funnel stages and audience segments.
+You have been provided with a simulated dataset that includes weekly paid media performance and ticket, pass, and reservation sales data across all parks, channels, platforms, and funnel stages. Note that it is assumed that single-day tickets are priced at $100, passes are priced at $300, and reservations are priced at $300. Note that for the single-day tickets, annual passes, reservations, and revenue “source of truth,” refer to the “Product Sales” tab. All metrics in the “Paid Media” tab are platform-sourced metrics.
+Your Task:
+Prepare a 5-10 slide PowerPoint presentation with strategic recommendations considering the following:
+Performance Overview
+Summarize key trends in media metrics, conversions, and revenue across channels and platforms.
+Highlight which channels, platforms, funnel stage, parks, and segments are driving the most value and least value.
+
+Audience Segmentation
+Analyze how different audience segments (Local, Same Day, Drive & Overnight, Domestic, and International) respond to media efforts.
+Recommend how to tailor media strategies by segment.
+
+Optimization Opportunities
+Identify areas where media spend could be reallocated for better ROI.
+Suggest new experiments or channels to test based on data insights.
+
+
+Strategic Recommendations
+Proposed a revised media mix strategy
+Include ideas for improving CAC, LTV, and overall media efficiency
+
+Measurement & Forecasting
+Recommend KPIs and measurement frameworks to track ongoing performance.
+Suggest forecasting methods to improve budget planning
+
+Deliverables:
+A 5–10 slide PowerPoint deck with:
+Key insights and visualizations
+Include charts, graphs, and tables where appropriate.
+Be prepared to present your findings and defend your recommendations.
+Data Analysis appended (i.e., Excel workbook, SQL script, Python script, etc.)
+
+Note: The data used in this case study is fake data. Although the dataset has been validated, please do not hesitate to reach out should there be any questions or unexpected data quality issues.
