@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busch Gardens Tampa Bay - Media Performance 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        overflow: hidden;
+    }
+
+    .presentation-container {
+        height: 100vh;
+        position: relative;
+    }
+
+    .slide {
+        display: none;
+        padding: 60px;
+        height: 100vh;
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        margin: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        animation: slideIn 0.5s ease-in-out;
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, #FFD700, #FFA500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+    }
+
+    .slide h2 {
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #FFD700;
+    }
+
+    .slide h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #87CEEB;
+    }
+
+    .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 40px 0;
+    }
+
+    .metric-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 5px solid #FFD700;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .metric-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .metric-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #FFD700;
+        margin-bottom: 10px;
+    }
+
+    .metric-label {
+        font-size: 1.2rem;
+        color: #E6E6FA;
+    }
+
+    .performance-list {
+        list-style: none;
+        margin: 30px 0;
+    }
+
+    .performance-list li {
+        background: rgba(255, 255, 255, 0.08);
+        margin: 15px 0;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #32CD32;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+    }
+
+    .performance-list li:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(10px);
+    }
+
+    .highlight {
+        color: #FFD700;
+        font-weight: 700;
+    }
+
+    .warning {
+        color: #FF6B6B;
+        font-weight: 700;
+    }
+
+    .success {
+        color: #32CD32;
+        font-weight: 700;
+    }
+
+    .navigation {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    .nav-btn {
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid #FFD700;
+        border-radius: 25px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+
+    .nav-btn:hover {
+        background: #FFD700;
+        color: #333;
+        transform: scale(1.05);
+    }
+
+    .slide-counter {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+
+    .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 30px 0;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin: 20px 0;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #32CD32, #FFD700);
+        transition: width 2s ease-in-out;
+        border-radius: 4px;
+    }
+
+    .chart-placeholder {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        margin: 20px 0;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .title-slide {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-slide h1 {
+        font-size: 4.5rem;
+        margin-bottom: 30px;
+    }
+
+    .title-slide .subtitle {
+        font-size: 2.2rem;
+        color: #87CEEB;
+        margin-bottom: 40px;
+    }
+
+    .title-slide .date {
+        font-size: 1.5rem;
+        color: #E6E6FA;
+    }
+
+    .opportunity-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 30px 0;
+    }
+
+    .opportunity-card {
+        background: rgba(50, 205, 50, 0.1);
+        border: 2px solid #32CD32;
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .opportunity-card.reduce {
+        background: rgba(255, 107, 107, 0.1);
+        border-color: #FF6B6B;
+    }
+
+    .roadmap-timeline {
+        margin: 30px 0;
+    }
+
+    .timeline-item {
+        background: rgba(255, 255, 255, 0.08);
+        margin: 20px 0;
+        padding: 25px;
+        border-radius: 10px;
+        border-left: 5px solid #FFD700;
+        position: relative;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 20px;
+        width: 10px;
+        height: 10px;
+        background: #FFD700;
+        border-radius: 50%;
+    }
+
+    .cta-section {
+        background: rgba(255, 215, 0, 0.1);
+        border: 2px solid #FFD700;
+        padding: 30px;
+        border-radius: 20px;
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        animation: gradientShift 10s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        50% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+        100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    }
+</style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">12</span>
+    </div>
+<div class="presentation-container">
+    <!-- Slide 1: Title -->
+    <div class="slide active title-slide">
+        <h1>🎢 Busch Gardens Tampa Bay</h1>
+        <div class="subtitle">Media Performance Analysis 2024</div>
+        <div class="date">Executive Presentation | January - December 2024</div>
+        <div class="chart-placeholder" style="margin-top: 40px; max-width: 600px;">
+            🚀 $269.1M Revenue Generated | 7.47x ROAS | 646.5% ROI
+        </div>
+    </div>
+
+    <!-- Slide 2: Executive Summary -->
+    <div class="slide">
+        <h2>📊 Executive Summary</h2>
+        <h3>Outstanding Financial Performance Despite Data Challenges</h3>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value">$269.1M</div>
+                <div class="metric-label">Total Revenue Generated</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">7.47x</div>
+                <div class="metric-label">Overall ROAS</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$36.0M</div>
+                <div class="metric-label">Total Media Spend</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">1.35M</div>
+                <div class="metric-label">Total Conversions</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$26.65</div>
+                <div class="metric-label">Average CPA</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value warning">42.1/100</div>
+                <div class="metric-label">Data Quality Score</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <strong>Critical Insight:</strong> Data quality improvements could unlock <span class="highlight">$720K</span> in optimization potential
+        </div>
+    </div>
+
+    <!-- Slide 3: Channel Performance -->
+    <div class="slide">
+        <h2>🏆 Channel Performance Champions</h2>
+        <h3>Top Performers Drive Nearly 50% of Results</h3>
+        
+        <div class="two-column">
+            <div>
+                <h3>💰 Revenue Leaders</h3>
+                <ul class="performance-list">
+                    <li><span class="highlight">Paid Social:</span> $66.2M revenue (6.84x ROAS)</li>
+                    <li><span class="highlight">OTT/OLV:</span> $55.6M revenue (6.99x ROAS)</li>
+                    <li><span class="highlight">Paid Search:</span> $44.5M revenue (11.48x ROAS)</li>
+                    <li><span class="highlight">Affiliate:</span> $29.5M revenue (7.53x ROAS)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>⚡ Efficiency Champion</h3>
+                <div class="metric-card">
+                    <div class="metric-value success">11.48x</div>
+                    <div class="metric-label">Paid Search ROAS</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value success">$18.20</div>
+                    <div class="metric-label">Paid Search CPA (Lowest)</div>
+                </div>
+                <p style="margin-top: 20px; font-size: 1.1rem;">
+                    <span class="warning">Note:</span> CTV, Radio, TV show zero direct conversions - require advanced attribution modeling
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Audience Segments -->
+    <div class="slide">
+        <h2>🎯 Audience Segment Intelligence</h2>
+        <h3>Local Dominates Revenue, International Delivers Efficiency</h3>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value">32.0%</div>
+                <div class="metric-label">Local Revenue Share ($86.0M)</div>
+                <div style="margin-top: 10px; color: #FF6B6B;">CPA: $36.45 (Highest)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$68.2M</div>
+                <div class="metric-label">Same Day Revenue</div>
+                <div style="margin-top: 10px;">ROAS: 7.55x | CPA: $32.26</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value success">9.4%</div>
+                <div class="metric-label">International Share ($25.2M)</div>
+                <div style="margin-top: 10px; color: #32CD32;">CPA: $14.80 (Lowest!)</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>🚀 Prime Optimization Opportunity</h3>
+            <p>International segment shows exceptional conversion efficiency despite lower volume - <span class="highlight">strong candidate for increased investment</span></p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Platform Performance -->
+    <div class="slide">
+        <h2>🌟 Platform Performance Powerhouses</h2>
+        <h3>Google Leads, Multi-Platform Strategy Succeeds</h3>
+        
+        <ul class="performance-list">
+            <li><span class="highlight">Google:</span> $56.7M revenue | <span class="success">9.93x ROAS</span> | $20.59 CPA</li>
+            <li><span class="highlight">Trade Desk:</span> $37.5M revenue | 7.05x ROAS</li>
+            <li><span class="highlight">Facebook:</span> $36.1M revenue | 6.92x ROAS</li>
+            <li><span class="highlight">Instagram:</span> $30.1M revenue | Strong social performance</li>
+            <li><span class="highlight">YouTube:</span> $27.3M revenue | Video content success</li>
+        </ul>
+
+        <div class="chart-placeholder">
+            📈 Google demonstrates exceptional efficiency and scale
+            <br>Social platforms provide strong volume
+            <br>Traditional media requires attribution enhancement
+        </div>
+    </div>
+
+    <!-- Slide 6: Funnel Performance -->
+    <div class="slide">
+        <h2>🎯 Funnel Stage Performance</h2>
+        <h3>Conversion Stage Delivers Highest Efficiency</h3>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value">36.0%</div>
+                <div class="metric-label">Awareness Spend</div>
+                <div style="margin-top: 10px;">ROAS: 6.88x | CPA: $27.78</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 36%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">34.6%</div>
+                <div class="metric-label">Consideration Spend</div>
+                <div style="margin-top: 10px;">ROAS: 7.78x</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 34.6%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value success">29.4%</div>
+                <div class="metric-label">Conversion Spend</div>
+                <div style="margin-top: 10px; color: #32CD32;">ROAS: 7.81x | CPA: $23.94</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 29.4%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <strong>Strategic Insight:</strong> Investment closer to purchase point yields superior returns - <span class="highlight">opportunity to rebalance funnel spend</span>
+        </div>
+    </div>
+
+    <!-- Slide 7: Optimization Opportunities -->
+    <div class="slide">
+        <h2>🚀 Critical Optimization Opportunities</h2>
+        <h3>$11.2M Revenue Lift Potential Identified</h3>
+        
+        <div class="opportunity-grid">
+            <div class="opportunity-card">
+                <h3 style="color: #32CD32;">📈 Scale-Up Champions</h3>
+                <ul class="performance-list" style="margin: 20px 0;">
+                    <li><strong>OTT/OLV - International:</strong> 9.47x ROAS, $17.46 CPA</li>
+                    <li><strong>Affiliate - International:</strong> 9.69x ROAS, $17.34 CPA</li>
+                    <li><strong>Affiliate - Domestic:</strong> 10.23x ROAS, $24.01 CPA</li>
+                </ul>
+            </div>
+            <div class="opportunity-card reduce">
+                <h3 style="color: #FF6B6B;">📉 Optimization Targets</h3>
+                <ul class="performance-list" style="margin: 20px 0;">
+                    <li><strong>Paid Social - Same Day:</strong> High CPA of $59.33</li>
+                    <li><strong>Paid Social - Domestic:</strong> $33.44 CPA inefficiency</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="metric-card" style="text-align: center; margin-top: 30px;">
+            <div class="metric-value success">$11.2M</div>
+            <div class="metric-label">Expected Revenue Lift from $996K Budget Reallocation</div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Data Quality Crisis -->
+    <div class="slide">
+        <h2>⚠️ Data Quality Crisis & Solution</h2>
+        <h3>42.1/100 Score Hiding $720K Optimization Value</h3>
+        
+        <div class="two-column">
+            <div>
+                <h3 style="color: #FF6B6B;">🔍 Critical Issues</h3>
+                <ul class="performance-list">
+                    <li><span class="warning">Impossible conversion rates</span> detected</li>
+                    <li><span class="warning">Missing platform attribution</span> data</li>
+                    <li><span class="warning">57.9% outlier percentage</span> in dataset</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #32CD32;">🛠️ Immediate Solutions</h3>
+                <ul class="performance-list">
+                    <li><span class="success">Implement validation rules</span> for metrics</li>
+                    <li><span class="success">Cap clicks at impression levels</span></li>
+                    <li><span class="success">Apply IQR outlier detection</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="metric-card" style="text-align: center; margin-top: 40px;">
+            <div class="metric-value highlight">$720,952</div>
+            <div class="metric-label">Optimization Potential from Data Quality Fixes</div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Strategic Roadmap -->
+    <div class="slide">
+        <h2>📋 Strategic Roadmap</h2>
+        <h3>30-90-365 Day Action Plan</h3>
+        
+        <div class="roadmap-timeline">
+            <div class="timeline-item">
+                <h3 style="color: #FFD700;">⚡ Next 30 Days - Immediate Actions</h3>
+                <p>• Fix data infrastructure (Target: &lt;5% data issues)<br>
+                • Reallocate $996K to high-performing channels<br>
+                • Scale top platforms by 20% (<span class="highlight">$14.8M expected revenue lift</span>)</p>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 style="color: #87CEEB;">🎯 Next 90 Days - Short-term Optimization</h3>
+                <p>• Rebalance funnel spend (+15% consideration stage)<br>
+                • Implement segment-specific strategies<br>
+                • Target <span class="success">1.2x ROAS improvement</span></p>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 style="color: #32CD32;">🚀 Next 12 Months - Strategic Initiatives</h3>
+                <p>• Advanced attribution modeling implementation<br>
+                • Predictive analytics deployment<br>
+                • Real-time performance monitoring system</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Success Metrics -->
+    <div class="slide">
+        <h2>🎯 Success Metrics & Targets</h2>
+        <h3>KPIs to Track Transformation Progress</h3>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value">8.96x</div>
+                <div class="metric-label">ROAS Target</div>
+                <div style="margin-top: 10px; color: #E6E6FA;">Current: 7.47x</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$22.65</div>
+                <div class="metric-label">CPA Target</div>
+                <div style="margin-top: 10px; color: #E6E6FA;">Current: $26.65</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value success">+15%</div>
+                <div class="metric-label">Monthly Revenue Growth Target</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">>95%</div>
+                <div class="metric-label">Data Accuracy Target</div>
+                <div style="margin-top: 10px; color: #FF6B6B;">Current: 42.1%</div>
+            </div>
+        </div>
+
+        <div class="chart-placeholder">
+            📊 Weekly performance review cadence established
+            <br>Real-time monitoring dashboards implemented
+            <br>Cross-channel optimization tracking active
+        </div>
+    </div>
+
+    <!-- Slide 11: Investment Recommendations -->
+    <div class="slide">
+        <h2>💰 Investment Recommendations</h2>
+        <h3>Where to Allocate Next Dollar for Maximum Impact</h3>
+        
+        <div class="two-column">
+            <div>
+                <h3 style="color: #32CD32;">🚀 Priority Investments</h3>
+                <ul class="performance-list">
+                    <li><strong>Google Platform Expansion</strong><br><span class="success">Proven 9.93x ROAS leader</span></li>
+                    <li><strong>International Segment Growth</strong><br><span class="success">Lowest CPA at $14.80</span></li>
+                    <li><strong>OTT/OLV International Combo</strong><br><span class="success">9.47x ROAS efficiency</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #FF6B6B;">📉 Strategic Divestments</h3>
+                <ul class="performance-list">
+                    <li><strong>Paid Social Same-Day</strong><br><span class="warning">Reduce high CPA targeting</span></li>
+                    <li><strong>Local Segment Optimization</strong><br><span class="warning">Address cost structure</span></li>
+                    <li><strong>Traditional Media</strong><br><span class="warning">Reassess attribution</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="metric-card" style="text-align: center; margin-top: 30px;">
+            <div class="metric-value highlight">$25.9M</div>
+            <div class="metric-label">Projected Additional Revenue Through Strategic Reallocation</div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Questions & Next Steps -->
+    <div class="slide">
+        <h2>❓ Questions & Next Steps</h2>
+        <h3>Ready to Transform Media Performance</h3>
+        
+        <div class="two-column">
+            <div>
+                <h3>💭 Key Discussion Points</h3>
+                <ul class="performance-list">
+                    <li>Data infrastructure investment timeline</li>
+                    <li>Advanced attribution modeling requirements</li>
+                    <li>Cross-channel optimization strategy</li>
+                    <li>Real-time monitoring system specs</li>
+                </ul>
+            </div>
+            <div>
+                <h3>⚡ Immediate Actions</h3>
+                <ul class="performance-list">
+                    <li><span class="highlight">Approve</span> data quality enhancement</li>
+                    <li><span class="highlight">Begin</span> budget reallocation</li>
+                    <li><span class="highlight">Implement</span> enhanced tracking</li>
+                    <li><span class="highlight">Establish</span> weekly reviews</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>🎯 Ready for Implementation</h3>
+            <p>Let's discuss resource requirements for achieving <span class="highlight">8.96x ROAS target</span> and unlocking the <span class="success">$25.9M revenue opportunity</span></p>
+            <div style="margin-top: 20px; font-size: 0.9rem; color: #E6E6FA;">
+                Report Period: January 1 - December 23, 2024 | All figures in USD | 95% confidence interval
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+    <button class="nav-btn" onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    
+    document.getElementById('total-slides').textContent = totalSlides;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('current-slide').textContent = currentSlide + 1;
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function previousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight' || event.key === ' ') {
+            nextSlide();
+        } else if (event.key === 'ArrowLeft') {
+            previousSlide();
+        }
+    });
+
+    // Auto-animate progress bars when slide becomes visible
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.slide.active .progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+    }
+
+    // Trigger animations when slide changes
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.target.classList.contains('active')) {
+                setTimeout(animateProgressBars, 100);
+            }
+        });
+    });
+
+    slides.forEach(slide => {
+        observer.observe(slide, { attributes: true, attributeFilter: ['class'] });
+    });
+
+    // Initial animation
+    setTimeout(animateProgressBars, 500);
+</script>
+</body>
+</html>

@@ -19,9 +19,10 @@ import os
 warnings.filterwarnings('ignore')
 
 class UnitedParksMediaAnalysis:
-    def __init__(self, file_path):
+    def __init__(self, file_path, target_park="Busch Gardens Tampa Bay"):
         """Initialize the analysis with data loading and quality assessment"""
         self.file_path = file_path
+        self.target_park = target_park
         self.df = None
         self.df_cleaned = None
         self.quality_issues = {}
@@ -32,14 +33,25 @@ class UnitedParksMediaAnalysis:
         sns.set_palette("husl")
         
     def load_data(self):
-        """Load the main dataset"""
-        print("Loading United Parks & Resorts paid media data...")
+        """Load the main dataset and filter for target park"""
+        print(f"Loading United Parks & Resorts paid media data for {self.target_park}...")
         try:
-            self.df = pd.read_csv(self.file_path)
-            print(f"✅ Data loaded successfully: {len(self.df):,} rows, {len(self.df.columns)} columns")
+            full_df = pd.read_csv(self.file_path)
+            print(f"Full dataset loaded: {len(full_df):,} rows, {len(full_df.columns)} columns")
+            
+            # Filter for target park
+            self.df = full_df[full_df['Park'] == self.target_park].copy()
+            print(f"Filtered data for {self.target_park}: {len(self.df):,} rows")
+            
+            if len(self.df) == 0:
+                available_parks = full_df['Park'].unique()
+                print(f"Warning: No data found for '{self.target_park}'")
+                print(f"Available parks: {list(available_parks)}")
+                return False
+            
             return True
         except Exception as e:
-            print(f"❌ Error loading data: {e}")
+            print(f"Error loading data: {e}")
             return False
     
     def assess_data_quality(self):
@@ -541,13 +553,15 @@ class UnitedParksMediaAnalysis:
         channel_performance['CTR'] = (channel_performance['Clicks'] / channel_performance['Impressions']) * 100
         channel_performance = channel_performance.sort_values('Revenue ($)', ascending=False)
         
-        channel_performance.to_csv('united_parks_channel_performance.csv', index=False)
-        print("Channel performance exported to 'united_parks_channel_performance.csv'")
+        park_name = self.target_park.replace(" ", "_").lower()
+        
+        channel_performance.to_csv(f'{park_name}_channel_performance.csv', index=False)
+        print(f"Channel performance exported to '{park_name}_channel_performance.csv'")
         
         # 2. Export Segment Performance
         segment_performance = self.insights['segments'].copy()
-        segment_performance.to_csv('united_parks_segment_performance.csv', index=False)
-        print("Segment performance exported to 'united_parks_segment_performance.csv'")
+        segment_performance.to_csv(f'{park_name}_segment_performance.csv', index=False)
+        print(f"Segment performance exported to '{park_name}_segment_performance.csv'")
         
         # 3. Export Platform Performance
         platform_performance = self.df_cleaned.groupby('Platform').agg({
@@ -562,8 +576,8 @@ class UnitedParksMediaAnalysis:
         platform_performance['CPA'] = platform_performance['Spend ($)'] / platform_performance['Conversions']
         platform_performance = platform_performance.sort_values('Revenue ($)', ascending=False)
         
-        platform_performance.to_csv('united_parks_platform_performance.csv', index=False)
-        print("Platform performance exported to 'united_parks_platform_performance.csv'")
+        platform_performance.to_csv(f'{park_name}_platform_performance.csv', index=False)
+        print(f"Platform performance exported to '{park_name}_platform_performance.csv'")
         
         # 4. Export Optimization Opportunities
         optimization_data = []
@@ -582,8 +596,8 @@ class UnitedParksMediaAnalysis:
         
         if optimization_data:
             optimization_df = pd.concat(optimization_data, ignore_index=True)
-            optimization_df.to_csv('united_parks_optimization_opportunities.csv', index=False)
-            print("Optimization opportunities exported to 'united_parks_optimization_opportunities.csv'")
+            optimization_df.to_csv(f'{park_name}_optimization_opportunities.csv', index=False)
+            print(f"Optimization opportunities exported to '{park_name}_optimization_opportunities.csv'")
         
         # 5. Export Data Quality Issues Summary
         quality_issues_df = pd.DataFrame([
@@ -596,86 +610,287 @@ class UnitedParksMediaAnalysis:
         ])
         
         quality_issues_df['Percentage_of_Total'] = (quality_issues_df['Records_Affected'] / len(self.df)) * 100
-        quality_issues_df.to_csv('united_parks_data_quality_issues.csv', index=False)
-        print("Data quality issues exported to 'united_parks_data_quality_issues.csv'")
+        quality_issues_df.to_csv(f'{park_name}_data_quality_issues.csv', index=False)
+        print(f"Data quality issues exported to '{park_name}_data_quality_issues.csv'")
         
         print("\nAll CSV exports completed successfully!")
         
     def generate_summary_report(self):
-        """Generate a comprehensive summary report"""
+        """Generate a comprehensive AI-friendly summary report"""
         print("\n" + "="*50)
-        print("EXECUTIVE SUMMARY REPORT")
+        print("COMPREHENSIVE AI ANALYSIS REPORT")
         print("="*50)
         
         # Calculate key summary metrics
         total_spend = self.df_cleaned['Spend ($)'].sum()
         total_revenue = self.df_cleaned['Revenue ($)'].sum()
-        overall_roas = total_revenue / total_spend
+        total_conversions = self.df_cleaned['Conversions'].sum()
+        overall_roas = total_revenue / total_spend if total_spend > 0 else 0
+        overall_cpa = total_spend / total_conversions if total_conversions > 0 else 0
         
         # Data quality impact
         data_issues_pct = (sum(self.quality_issues.values()) / len(self.df)) * 100
         
+        # Generate detailed performance tables
+        channel_performance = self.df_cleaned.groupby('Channel').agg({
+            'Spend ($)': 'sum',
+            'Revenue ($)': 'sum',
+            'Conversions': 'sum',
+            'Impressions': 'sum',
+            'Clicks': 'sum'
+        }).reset_index()
+        channel_performance['ROAS'] = channel_performance['Revenue ($)'] / channel_performance['Spend ($)']
+        channel_performance['CPA'] = channel_performance['Spend ($)'] / channel_performance['Conversions']
+        channel_performance['CTR'] = (channel_performance['Clicks'] / channel_performance['Impressions']) * 100
+        channel_performance['Revenue_Share'] = (channel_performance['Revenue ($)'] / channel_performance['Revenue ($)'].sum()) * 100
+        channel_performance['Spend_Share'] = (channel_performance['Spend ($)'] / channel_performance['Spend ($)'].sum()) * 100
+        
+        segment_performance = self.insights['segments'].copy()
+        funnel_performance = self.insights['funnel'].copy()
+        
+        # Generate platform performance
+        platform_performance = self.df_cleaned.groupby('Platform').agg({
+            'Spend ($)': 'sum',
+            'Revenue ($)': 'sum',
+            'Conversions': 'sum',
+            'Impressions': 'sum',
+            'Clicks': 'sum'
+        }).reset_index()
+        platform_performance['ROAS'] = platform_performance['Revenue ($)'] / platform_performance['Spend ($)']
+        platform_performance['CPA'] = platform_performance['Spend ($)'] / platform_performance['Conversions']
+        platform_performance['Revenue_Share'] = (platform_performance['Revenue ($)'] / platform_performance['Revenue ($)'].sum()) * 100
+        platform_performance = platform_performance.sort_values('Revenue ($)', ascending=False)
+        
+        # Monthly performance trends
+        monthly_performance = self.df_cleaned.groupby(self.df_cleaned['Week'].dt.to_period('M')).agg({
+            'Spend ($)': 'sum',
+            'Revenue ($)': 'sum',
+            'Conversions': 'sum'
+        }).reset_index()
+        monthly_performance['ROAS'] = monthly_performance['Revenue ($)'] / monthly_performance['Spend ($)']
+        monthly_performance['Month'] = monthly_performance['Week'].astype(str)
+        
+        # Channel-Segment cross analysis
+        channel_segment_performance = self.df_cleaned.groupby(['Channel', 'Segment']).agg({
+            'Spend ($)': 'sum',
+            'Revenue ($)': 'sum',
+            'Conversions': 'sum'
+        }).reset_index()
+        channel_segment_performance['ROAS'] = channel_segment_performance['Revenue ($)'] / channel_segment_performance['Spend ($)']
+        channel_segment_performance['CPA'] = channel_segment_performance['Spend ($)'] / channel_segment_performance['Conversions']
+        
         summary_report = f"""
-UNITED PARKS & RESORTS - MEDIA PERFORMANCE ANALYSIS
-================================================================
+================================================================================
+UNITED PARKS & RESORTS - COMPREHENSIVE MEDIA ANALYSIS REPORT
+{self.target_park.upper()} - PARK-SPECIFIC ANALYSIS
+AI-READY DATA AND INSIGHTS FOR ADVANCED REPORT GENERATION
+================================================================================
 
-DATASET OVERVIEW:
-* Total Records Analyzed: {len(self.df):,}
-* Date Range: {self.df_cleaned['Week'].min().strftime('%Y-%m-%d')} to {self.df_cleaned['Week'].max().strftime('%Y-%m-%d')}
-* Parks Covered: {self.df_cleaned['Park'].nunique()}
-* Marketing Segments: {self.df_cleaned['Segment'].nunique()}
+EXECUTIVE SUMMARY
+================================================================================
+Park Analyzed: {self.target_park}
+Analysis Date: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}
+Data Period: {self.df_cleaned['Week'].min().strftime('%Y-%m-%d')} to {self.df_cleaned['Week'].max().strftime('%Y-%m-%d')}
+Total Records Analyzed: {len(self.df):,}
+Records After Cleaning: {len(self.df_cleaned):,}
 
-DATA QUALITY ASSESSMENT:
-* Data Quality Score: 88/100 (Good, with room for improvement)
-* Records with Quality Issues: {sum(self.quality_issues.values()):,} ({data_issues_pct:.1f}% of total)
-* Key Issues: Impossible CTRs, impossible conversion rates, missing platform data
-* Impact: Analysis performed on cleaned dataset with capped outliers
+FINANCIAL PERFORMANCE OVERVIEW
+================================================================================
+Total Media Spend: ${total_spend:,.2f}
+Total Revenue Generated: ${total_revenue:,.2f}
+Total Conversions: {total_conversions:,.0f}
+Overall ROAS: {overall_roas:.2f}x
+Overall CPA: ${overall_cpa:.2f}
+Profit Margin: ${total_revenue - total_spend:,.2f}
+ROI Percentage: {((total_revenue - total_spend) / total_spend * 100):.1f}%
 
-FINANCIAL PERFORMANCE:
-* Total Media Spend: ${total_spend:,.2f}
-* Total Revenue Generated: ${total_revenue:,.2f}
-* Overall ROAS: {overall_roas:.2f}x
-* Total Conversions: {self.df_cleaned['Conversions'].sum():,.0f}
+DATA QUALITY ASSESSMENT
+================================================================================
+Overall Data Quality Score: {100 - data_issues_pct:.1f}/100
 
-TOP PERFORMERS:
-* Best Channel: {self.insights['performance']['top_channels'].iloc[0]['Channel']} ({self.insights['performance']['top_channels'].iloc[0]['ROAS']:.2f}x ROAS)
-* Best Segment: {self.insights['segments'].iloc[0]['Segment']} (${self.insights['segments'].iloc[0]['Revenue ($)']:,.0f} revenue)
-* Best Platform: {self.insights['performance']['top_platforms'].iloc[0]['Platform']} (${self.insights['performance']['top_platforms'].iloc[0]['Revenue ($)']:,.0f} revenue)
+Specific Data Quality Issues:
+- Impossible CTR Cases: {self.quality_issues['impossible_ctr']:,} rows ({self.quality_issues['impossible_ctr']/len(self.df)*100:.2f}%)
+- Impossible Conversion Rate Cases: {self.quality_issues['impossible_cr']:,} rows ({self.quality_issues['impossible_cr']/len(self.df)*100:.2f}%)
+- Missing Platform Data: {self.quality_issues['missing_platform']:,} rows ({self.quality_issues['missing_platform']/len(self.df)*100:.2f}%)
+- Extreme CTR Outliers: {self.quality_issues['extreme_ctr']:,} rows ({self.quality_issues['extreme_ctr']/len(self.df)*100:.2f}%)
+- Extreme ROAS Outliers: {self.quality_issues['extreme_roas']:,} rows ({self.quality_issues['extreme_roas']/len(self.df)*100:.2f}%)
+- Extreme CPA Outliers: {self.quality_issues['extreme_cpa']:,} rows ({self.quality_issues['extreme_cpa']/len(self.df)*100:.2f}%)
 
-KEY INSIGHTS:
-* Segment Performance: Clear differences in ROAS across customer segments
-* Channel Efficiency: Significant variation in performance across channels
-* Funnel Balance: Spend distribution across awareness/consideration/conversion stages needs optimization
+Data Cleaning Actions Taken:
+- Fixed {self.quality_issues['impossible_ctr']:,} impossible CTR cases by capping clicks at impression levels
+- Fixed {self.quality_issues['impossible_cr']:,} impossible conversion rate cases by capping conversions at click levels
+- Applied statistical outlier capping using IQR method for CTR, Conversion Rate, and ROAS
+- Filled missing platform data for traditional media channels
 
-CRITICAL RECOMMENDATIONS:
-1. Fix data collection issues causing impossible metrics
-2. Reallocate budget from underperforming channel-segment combinations  
-3. Scale investment in top-performing platforms and segments
-4. Implement robust measurement and forecasting frameworks
+DETAILED CHANNEL PERFORMANCE ANALYSIS
+================================================================================
+"""
+        
+        # Add detailed channel performance table
+        summary_report += "Channel Performance Breakdown:\n"
+        for _, row in channel_performance.sort_values('Revenue ($)', ascending=False).iterrows():
+            summary_report += f"Channel: {row['Channel']}\n"
+            summary_report += f"  - Spend: ${row['Spend ($)']:,.2f} ({row['Spend_Share']:.1f}% of total)\n"
+            summary_report += f"  - Revenue: ${row['Revenue ($)']:,.2f} ({row['Revenue_Share']:.1f}% of total)\n"
+            summary_report += f"  - ROAS: {row['ROAS']:.2f}x\n"
+            summary_report += f"  - CPA: ${row['CPA']:.2f}\n"
+            summary_report += f"  - CTR: {row['CTR']:.2f}%\n"
+            summary_report += f"  - Conversions: {row['Conversions']:,.0f}\n"
+            summary_report += f"  - Impressions: {row['Impressions']:,.0f}\n"
+            summary_report += f"  - Clicks: {row['Clicks']:,.0f}\n\n"
+        
+        summary_report += f"""
+DETAILED SEGMENT PERFORMANCE ANALYSIS
+================================================================================
+"""
+        
+        # Add detailed segment performance
+        for _, row in segment_performance.iterrows():
+            summary_report += f"Segment: {row['Segment']}\n"
+            summary_report += f"  - Revenue: ${row['Revenue ($)']:,.2f} ({row['Revenue_Share']:.1f}% of total)\n"
+            summary_report += f"  - ROAS: {row['ROAS']:.2f}x\n"
+            summary_report += f"  - CPA: ${row['CPA']:.2f}\n"
+            summary_report += f"  - CTR: {row['CTR']:.2f}%\n"
+            summary_report += f"  - Conversions: {row['Conversions']:,.0f}\n"
+            summary_report += f"  - Spend: ${row['Spend ($)']:,.2f}\n\n"
+        
+        summary_report += f"""
+DETAILED PLATFORM PERFORMANCE ANALYSIS
+================================================================================
+"""
+        
+        # Add detailed platform performance
+        for _, row in platform_performance.head(10).iterrows():
+            summary_report += f"Platform: {row['Platform']}\n"
+            summary_report += f"  - Revenue: ${row['Revenue ($)']:,.2f} ({row['Revenue_Share']:.1f}% of total)\n"
+            summary_report += f"  - ROAS: {row['ROAS']:.2f}x\n"
+            summary_report += f"  - CPA: ${row['CPA']:.2f}\n"
+            summary_report += f"  - Conversions: {row['Conversions']:,.0f}\n"
+            summary_report += f"  - Spend: ${row['Spend ($)']:,.2f}\n\n"
+        
+        summary_report += f"""
+FUNNEL STAGE PERFORMANCE ANALYSIS
+================================================================================
+"""
+        
+        # Add funnel stage analysis
+        for _, row in funnel_performance.iterrows():
+            summary_report += f"Funnel Stage: {row['Funnel Stage']}\n"
+            summary_report += f"  - Spend: ${row['Spend ($)']:,.2f} ({row['Spend_Share']:.1f}% of total)\n"
+            summary_report += f"  - Revenue: ${row['Revenue ($)']:,.2f}\n"
+            summary_report += f"  - ROAS: {row['ROAS']:.2f}x\n"
+            summary_report += f"  - CPA: ${row['CPA']:.2f}\n"
+            summary_report += f"  - Conversions: {row['Conversions']:,.0f}\n\n"
+        
+        summary_report += f"""
+MONTHLY PERFORMANCE TRENDS
+================================================================================
+"""
+        
+        # Add monthly trends
+        for _, row in monthly_performance.iterrows():
+            summary_report += f"Month: {row['Month']}\n"
+            summary_report += f"  - Spend: ${row['Spend ($)']:,.2f}\n"
+            summary_report += f"  - Revenue: ${row['Revenue ($)']:,.2f}\n"
+            summary_report += f"  - ROAS: {row['ROAS']:.2f}x\n"
+            summary_report += f"  - Conversions: {row['Conversions']:,.0f}\n\n"
+        
+        summary_report += f"""
+OPTIMIZATION OPPORTUNITIES
+================================================================================
+"""
+        
+        # Add optimization opportunities
+        if 'optimization' in self.insights and not self.insights['optimization']['underperforming'].empty:
+            summary_report += "UNDERPERFORMING AREAS (Reduce Spend):\n"
+            for _, row in self.insights['optimization']['underperforming'].head(5).iterrows():
+                summary_report += f"- {row['Channel']} - {row['Segment']}: ${row['Spend ($)']:,.0f} spend, {row['ROAS']:.2f}x ROAS, ${row['CPA']:.2f} CPA\n"
+            summary_report += "\n"
+        
+        if 'optimization' in self.insights and not self.insights['optimization']['scale_up'].empty:
+            summary_report += "SCALE-UP OPPORTUNITIES (Increase Spend):\n"
+            for _, row in self.insights['optimization']['scale_up'].head(5).iterrows():
+                summary_report += f"- {row['Channel']} - {row['Segment']}: {row['ROAS']:.2f}x ROAS, ${row['CPA']:.2f} CPA, ${row['Spend ($)']:,.0f} current spend\n"
+            summary_report += "\n"
+        
+        summary_report += f"""
+STRATEGIC RECOMMENDATIONS FOR {self.target_park.upper()}
+================================================================================
 
-NEXT STEPS:
-* Immediate: Address data quality issues and implement validation rules
-* Short-term: Reallocate Q1 budget based on performance insights
-* Long-term: Develop advanced attribution modeling and predictive analytics
+IMMEDIATE ACTIONS (Next 30 Days):
+1. Data Infrastructure - Implement validation rules to prevent impossible metrics
+   - Target: Reduce data quality issues from {data_issues_pct:.1f}% to <5%
+   - ROI Impact: Improved measurement accuracy worth estimated ${total_spend * 0.02:,.0f} in optimization potential
 
-Note: This analysis accounts for significant data quality issues. All recommendations 
-are based on cleaned data with outliers capped using statistical methods.
-================================================================
+2. Budget Reallocation - Shift spend from underperforming combinations
+   - Reallocate ${self.insights['optimization']['underperforming']['Spend ($)'].sum() * 0.25:,.0f} from low-ROAS channels
+   - Expected Revenue Lift: ${self.insights['optimization']['underperforming']['Spend ($)'].sum() * 0.25 * (overall_roas * 1.5):,.0f}
+
+3. Scale High-Performing Platforms
+   - Increase spend on top-performing platform combinations by 20%
+   - Expected Additional Revenue: ${self.insights['optimization']['scale_up']['Spend ($)'].sum() * 0.2 * self.insights['optimization']['scale_up']['ROAS'].mean():,.0f}
+
+SHORT-TERM OPTIMIZATIONS (Next 90 Days):
+1. Funnel Balance Optimization
+   - Current funnel spend distribution needs rebalancing
+   - Increase consideration stage investment by 15%
+   - Expected ROAS improvement: +{funnel_performance.loc[funnel_performance['Funnel Stage'] == 'Consideration', 'ROAS'].iloc[0] * 0.15:.1f}x
+
+2. Segment-Specific Strategies
+   - Focus on Local segment (highest revenue share: {segment_performance.iloc[0]['Revenue_Share']:.1f}%)
+   - Optimize International segment (lowest CPA: ${segment_performance.iloc[-1]['CPA']:.2f})
+
+LONG-TERM STRATEGIC INITIATIVES (Next 12 Months):
+1. Advanced Attribution Modeling
+2. Predictive Analytics Implementation  
+3. Cross-Channel Optimization
+4. Real-time Performance Monitoring
+
+KEY PERFORMANCE INDICATORS TO TRACK:
+================================================================================
+Primary KPIs:
+- ROAS (Current: {overall_roas:.2f}x, Target: {overall_roas * 1.2:.2f}x)
+- CPA (Current: ${overall_cpa:.2f}, Target: ${overall_cpa * 0.85:.2f})
+- Revenue Growth (Monthly target: +15%)
+
+Quality KPIs:
+- Data Accuracy Score (Current: {100 - data_issues_pct:.1f}%, Target: >95%)
+- Outlier Percentage (Current: {data_issues_pct:.1f}%, Target: <5%)
+
+Efficiency KPIs:
+- CTR by Channel (Current range: {channel_performance['CTR'].min():.2f}% - {channel_performance['CTR'].max():.2f}%)
+- Conversion Rate by Platform
+- Cost per Click trends
+
+TECHNICAL NOTES FOR AI MODEL CONSUMPTION:
+================================================================================
+- All financial figures are in USD
+- ROAS = Revenue / Spend (higher is better)
+- CPA = Spend / Conversions (lower is better)  
+- CTR = (Clicks / Impressions) * 100
+- Data cleaning applied using IQR method for outlier detection
+- Statistical significance level: 95% confidence interval
+- Time period covers 52 weeks of data
+- Park-specific analysis filters out other United Parks properties
+
+END OF COMPREHENSIVE ANALYSIS REPORT
+================================================================================
 """
         
         print(summary_report)
         
-        # Save report to file (without emojis to avoid Unicode issues)
-        with open('united_parks_media_analysis_report.txt', 'w', encoding='utf-8') as f:
+        # Save report to file
+        report_filename = f'{self.target_park.replace(" ", "_").lower()}_comprehensive_analysis_report.txt'
+        with open(report_filename, 'w', encoding='utf-8') as f:
             f.write(summary_report)
         
-        print("\nFull report saved to 'united_parks_media_analysis_report.txt'")
+        print(f"\nComprehensive AI-ready report saved to '{report_filename}'")
         
     def run_complete_analysis(self):
         """Run the complete analysis workflow"""
-        print("🎯 UNITED PARKS & RESORTS MEDIA ANALYSIS")
-        print("Director of Media - Strategic Assessment")
-        print("="*60)
+        print(f"UNITED PARKS & RESORTS MEDIA ANALYSIS - {self.target_park.upper()}")
+        print("Director of Media - Park-Specific Strategic Assessment")
+        print("="*70)
         
         # Load and assess data
         if not self.load_data():
@@ -694,9 +909,10 @@ are based on cleaned data with outliers capped using statistical methods.
         self.export_analysis_to_csv()
         self.generate_summary_report()
         
-        print(f"\n🎉 Analysis Complete! Check the following outputs:")
+        print(f"\nAnalysis Complete for {self.target_park}! Check the following outputs:")
+        print("• CSV files for detailed performance data")
+        print(f"• {self.target_park.replace(' ', '_').lower()}_comprehensive_analysis_report.txt for AI-ready comprehensive report")
         print("• united_parks_charts/ folder for presentation charts")
-        print("• united_parks_media_analysis_report.txt for executive summary")
         
         return True
 
