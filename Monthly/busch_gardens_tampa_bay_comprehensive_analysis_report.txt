@@ -8,7 +8,7 @@ AI-READY DATA AND INSIGHTS FOR ADVANCED REPORT GENERATION
 EXECUTIVE SUMMARY
 ================================================================================
 Park Analyzed: Busch Gardens Tampa Bay
-Analysis Date: 2025-07-22 23:00:30
+Analysis Date: 2025-07-23 23:09:29
 Data Period: 2024-01-01 to 2024-12-23
 Total Records Analyzed: 7,540
 Records After Cleaning: 7,540
@@ -25,7 +25,7 @@ ROI Percentage: 172.8%
 
 DATA QUALITY ASSESSMENT
 ================================================================================
-Overall Data Quality Score: 45.6/100
+Overall Data Quality Score: 42.5/100
 
 Specific Data Quality Issues:
 - Impossible CTR Cases: 28 rows (0.37%)
@@ -413,7 +413,7 @@ STRATEGIC RECOMMENDATIONS FOR BUSCH GARDENS TAMPA BAY
 
 IMMEDIATE ACTIONS (Next 30 Days):
 1. Data Infrastructure - Implement validation rules to prevent impossible metrics
-   - Target: Reduce data quality issues from 54.4% to <5%
+   - Target: Reduce data quality issues from 57.5% to <5%
    - ROI Impact: Improved measurement accuracy worth estimated $720,952 in optimization potential
 
 2. Budget Reallocation - Shift spend from underperforming combinations
@@ -448,8 +448,8 @@ Primary KPIs:
 - Revenue Growth (Monthly target: +15%)
 
 Quality KPIs:
-- Data Accuracy Score (Current: 45.6%, Target: >95%)
-- Outlier Percentage (Current: 54.4%, Target: <5%)
+- Data Accuracy Score (Current: 42.5%, Target: >95%)
+- Outlier Percentage (Current: 57.5%, Target: <5%)
 
 Efficiency KPIs:
 - CTR by Channel (Current range: 0.00% - 2.04%)

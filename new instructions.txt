@@ -1,0 +1,177 @@
+# Advanced Media Performance Analysis Instructions for United Parks & Resorts
+
+## UPDATED ANALYSIS FRAMEWORK - COMBINED PAID MEDIA & PRODUCT SALES DATA
+
+### 1. Data Sources & Integration Requirements
+
+**Primary Data Sources** *(Updated to include ticket sales integration)*
+- **Busch Gardens Specific Data**: Monthly/busch_gardens_tampa_bay_* files containing combined paid media and ticket sales data
+  - *In simple terms: All Busch Gardens marketing data now includes actual ticket sales, not just ad clicks*
+- **Global Portfolio Data**: Global/united_parks_global_* files for cross-park comparative analysis
+  - *Translation: Data covering all 12 United Parks properties for competitive benchmarking*
+- **Combined Revenue Attribution**: Paid media campaigns directly linked to product sales and ticket purchases
+  - *What this means: We can now see which specific ads drive actual ticket sales, not just website visits*
+
+**New Integrated Metrics** *(Enhanced with actual sales data)*
+- **Ticket Revenue per Campaign**: Direct attribution from paid media to actual ticket purchases
+  - *In layman's terms: Know exactly how much ticket money each ad campaign generates*
+- **Campaign-to-Sales Conversion**: Track the full funnel from ad impression to ticket purchase
+  - *Translation: Measure the complete journey from seeing an ad to buying a ticket*
+- **Cross-Park Performance Benchmarking**: Compare Busch Gardens efficiency against portfolio average
+  - *What this means: See how Busch Gardens stacks up against SeaWorld, Aquatica, etc.*
+
+### 2. 10-Slide Report Structure (Concise Format)
+
+**Slide 1: Executive Dashboard** *(30-second overview)*
+- Busch Gardens 2024 performance vs. United Parks portfolio average
+- Key metrics: Revenue, ROAS, Ticket Sales, Market Share within portfolio
+- *In simple terms: How Busch Gardens performed vs. sister parks in one view*
+
+**Slide 2: Revenue Performance Deep Dive** *(Busch Gardens focus)*
+- Monthly ticket sales trends with paid media attribution
+- Top performing campaigns with actual ticket revenue generated
+- *Translation: Which ads actually sold the most tickets month by month*
+
+**Slide 3: Cross-Park Competitive Analysis** *(Portfolio comparison)*
+- Busch Gardens vs. SeaWorld Orlando, Busch Gardens Williamsburg, etc.
+- Efficiency rankings: Cost per ticket sold, Revenue per media dollar
+- *What this means: How Busch Gardens compares to other parks in the portfolio*
+
+**Slide 4: Channel Performance - Ticket Sales Attribution** *(Updated with sales data)*
+- Which marketing channels drive most actual ticket purchases (not just clicks)
+- ROI ranking by channel based on real revenue, not estimated conversions
+- *In layman's terms: Which types of ads actually sell tickets vs. just get clicks*
+
+**Slide 5: Seasonal Ticket Sales Patterns** *(Strategic timing insights)*
+- Monthly ticket sales patterns vs. other United Parks properties
+- Identify when Busch Gardens outperforms/underperforms vs. portfolio
+- *Translation: When Busch Gardens is strongest/weakest compared to sister parks*
+
+**Slide 6: Customer Segment Analysis - Actual Purchasers** *(Real buyer data)*
+- Local vs. Tourist ticket purchasing patterns from paid media
+- Segment profitability based on actual ticket sales, not estimated value
+- *What this means: Which customer types actually buy the most tickets from our ads*
+
+**Slide 7: Cross-Park Optimization Opportunities** *(Strategic reallocation)*
+- Budget reallocation opportunities from underperforming parks to Busch Gardens
+- Successful campaign strategies from other parks that could boost Busch Gardens
+- *In simple terms: How to move money and tactics from other parks to grow Busch Gardens*
+
+**Slide 8: Market Share Analysis** *(Portfolio positioning)*
+- Busch Gardens share of United Parks total ticket revenue
+- Growth opportunities vs. cannibalizing other park performance
+- *Translation: How much of total United Parks sales comes from Busch Gardens*
+
+**Slide 9: Strategic Recommendations** *(Cross-park insights)*
+- Specific tactics from high-performing parks to implement at Busch Gardens
+- Budget reallocation recommendations from portfolio analysis
+- *What this means: Concrete actions to boost Busch Gardens using other parks' success*
+
+**Slide 10: Implementation Roadmap** *(90-day action plan)*
+- Phase 1: Quick wins from cross-park best practices (30 days)
+- Phase 2: Budget reallocation testing (60 days)  
+- Phase 3: Full optimization based on results (90 days)
+- *In layman's terms: Step-by-step plan to boost Busch Gardens performance*
+
+### 3. Cross-Park Comparative Analysis Framework
+
+**Performance Benchmarking** *(How Busch Gardens stacks up)*
+- Cost per ticket sold: Busch Gardens vs. portfolio average
+  - *Translation: How much Busch Gardens spends to sell one ticket vs. other parks*
+- Revenue per media dollar: Efficiency ranking within United Parks portfolio
+  - *What this means: How much ticket money each advertising dollar generates compared to sister parks*
+- Market share within portfolio: Busch Gardens' portion of total United Parks revenue
+  - *In simple terms: What percentage of all United Parks ticket sales comes from Busch Gardens*
+- Seasonal performance patterns: When Busch Gardens outperforms vs. underperforms other parks
+  - *Translation: Identify months when Busch Gardens is strongest/weakest vs. competition*
+
+**Strategic Opportunity Identification** *(Cross-park optimization)*
+- High-performing campaigns at other parks that could be replicated at Busch Gardens
+  - *What this means: Find successful ad campaigns at SeaWorld/Aquatica that could work for Busch Gardens*
+- Underperforming park budgets that could be reallocated to Busch Gardens
+  - *In layman's terms: Find parks with poor ROI and move their budget to Busch Gardens*
+- Customer segment gaps: Audiences other parks capture that Busch Gardens misses
+  - *Translation: Find customer types that visit other parks but not Busch Gardens*
+- Channel efficiency disparities: Marketing channels that work better at other parks
+  - *What this means: Find advertising types that work great for sister parks but poorly for Busch Gardens*
+
+### 4. Enhanced Optimization Opportunities
+
+**Portfolio-Level Budget Optimization** *(Smart money movement)*
+- Calculate marginal return on ad spend (ROAS) across all parks to identify reallocation opportunities
+  - *In simple terms: Find parks where the last dollar spent gives poor returns and move it to parks giving good returns*
+- Apply portfolio theory to media mix: treat parks as investment assets with different risk/return profiles
+  - *Translation: Balance United Parks' marketing budget like a stock portfolio - some safe investments, some growth investments*
+- Identify cross-park cannibalization: when promoting one park reduces another's performance
+  - *What this means: Make sure promoting Busch Gardens doesn't accidentally hurt SeaWorld's sales*
+
+**Cross-Park Campaign Synergies** *(Making parks work together)*
+- Multi-park vacation packages: campaigns promoting Busch Gardens + SeaWorld combinations
+  - *In layman's terms: Sell vacation packages that include multiple United Parks properties*
+- Geographic optimization: allocate budget based on proximity and travel patterns between parks
+  - *Translation: Spend more on Busch Gardens ads in areas where people also visit other United Parks*
+- Shared audience targeting: leverage successful audience segments across multiple properties
+  - *What this means: Use customer types that work well for one park to target similar people for other parks*
+
+### 5. Key Performance Indicators (Updated)
+
+**Busch Gardens Specific KPIs** *(Park-focused metrics)*
+- Ticket Revenue per Campaign (actual sales, not estimated)
+- Cost per Ticket Sold (real tickets, not proxy conversions)
+- Market Share within United Parks Portfolio (% of total portfolio revenue)
+- Cross-park visitor rate (customers who visit multiple United Parks properties)
+
+**Comparative KPIs** *(Cross-park benchmarks)*
+- Efficiency Ranking within Portfolio (1-12 ranking vs. other parks)
+- Above/Below Portfolio Average Performance (% difference from United Parks average)
+- Cross-Park Campaign Success Rate (campaigns replicated successfully from other parks)
+- Budget Reallocation Impact (revenue gain from moving budget between parks)
+
+### 6. Monthly Reporting Requirements (Streamlined)
+
+**Monthly Slide Updates** *(Focused on key insights)*
+- Month-over-month Busch Gardens performance vs. portfolio average
+- New cross-park optimization opportunities identified
+- Budget reallocation impact tracking
+- Campaign performance: what worked at other parks that Busch Gardens should try
+
+**Quarterly Deep Dives** *(Strategic reviews)*
+- Portfolio budget reallocation recommendations
+- Cross-park campaign syndication opportunities  
+- Market share evolution within United Parks portfolio
+- Competitive positioning vs. external competitors
+
+### 7. Strategic Recommendations Framework (Enhanced)
+
+**Cross-Park Learning** *(Leverage portfolio knowledge)*
+- Successful campaign replication: adapt high-performing campaigns from other parks
+  - *In simple terms: Copy what works at SeaWorld/Aquatica and adjust for Busch Gardens*
+- Audience expansion: target customer segments that work well for sister parks
+  - *Translation: Go after customer types that love other United Parks but haven't tried Busch Gardens*
+- Channel optimization: adopt marketing channels that excel at other properties
+  - *What this means: Use advertising types that work great for other parks but Busch Gardens underuses*
+
+**Portfolio Optimization** *(Smart resource allocation)*
+- Budget reallocation from underperforming parks to high-ROI opportunities at Busch Gardens
+  - *In layman's terms: Move advertising money from parks with poor returns to Busch Gardens if it performs better*
+- Geographic market prioritization based on cross-park visitor patterns
+  - *Translation: Focus on geographic areas where people visit multiple United Parks properties*
+- Seasonal coordination to maximize portfolio-wide performance
+  - *What this means: Coordinate marketing timing across all parks to avoid competing with each other*
+
+## ANALYTICAL OUTPUT REQUIREMENTS
+
+**10-Slide Report Format** *(Concise, actionable insights)*
+1. Each slide focuses on one key insight with clear action items
+2. Cross-park comparisons prominent throughout
+3. Specific budget reallocation recommendations with projected impact
+4. Campaign replication opportunities from other parks
+5. Clear ROI projections for all recommendations
+
+**Data Integration** *(Combined paid media + ticket sales)*
+- All analysis based on actual ticket revenue, not proxy metrics
+- Direct attribution from campaigns to product sales
+- Cross-park revenue comparison with same methodology
+- Portfolio-level optimization recommendations
+
+*In layman's terms: Create a focused 10-slide report showing how Busch Gardens can learn from other United Parks properties to sell more tickets, where to move advertising budget for better results, and which successful campaigns from sister parks should be copied at Busch Gardens.*
