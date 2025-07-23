@@ -1190,12 +1190,18 @@ END OF COMPREHENSIVE ANALYSIS REPORT
 def main():
     """Main execution function"""
     
-    # File path for the main dataset
-    main_file = "Weekly_Paid_Media_and_Sales_Data.xlsx - Paid Media.csv"
+    # File path for the main dataset - prioritize new data source
+    new_main_file = "United Parks - Paid Media - Sheet1.csv"
+    old_main_file = "Weekly_Paid_Media_and_Sales_Data.xlsx - Paid Media.csv"
     
-    # Check if main file exists, fall back to sample if needed
-    if not os.path.exists(main_file):
-        print(f"⚠️ Main file '{main_file}' not found.")
+    # Check for new file first, then fall back to old files
+    if os.path.exists(new_main_file):
+        print(f"📊 Using updated dataset: '{new_main_file}'")
+        main_file = new_main_file
+    elif os.path.exists(old_main_file):
+        print(f"⚠️ Using legacy dataset: '{old_main_file}'")
+        main_file = old_main_file
+    else:
         sample_file = "Weekly_Paid_Media_and_Sales_Data.xlsx - Sample Data.csv"
         if os.path.exists(sample_file):
             print(f"📝 Using sample file '{sample_file}' for demonstration.")

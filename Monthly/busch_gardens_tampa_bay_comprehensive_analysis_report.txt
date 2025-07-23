@@ -8,7 +8,7 @@ AI-READY DATA AND INSIGHTS FOR ADVANCED REPORT GENERATION
 EXECUTIVE SUMMARY
 ================================================================================
 Park Analyzed: Busch Gardens Tampa Bay
-Analysis Date: 2025-07-22 20:48:16
+Analysis Date: 2025-07-22 23:00:30
 Data Period: 2024-01-01 to 2024-12-23
 Total Records Analyzed: 7,540
 Records After Cleaning: 7,540
@@ -16,28 +16,28 @@ Records After Cleaning: 7,540
 FINANCIAL PERFORMANCE OVERVIEW
 ================================================================================
 Total Media Spend: $36,047,606.84
-Total Revenue Generated: $269,104,430.37
-Total Conversions: 1,352,726
-Overall ROAS: 7.47x
-Overall CPA: $26.65
-Profit Margin: $233,056,823.53
-ROI Percentage: 646.5%
+Total Revenue Generated: $98,348,700.00
+Total Conversions: 522,752
+Overall ROAS: 2.73x
+Overall CPA: $68.96
+Profit Margin: $62,301,093.16
+ROI Percentage: 172.8%
 
 DATA QUALITY ASSESSMENT
 ================================================================================
-Overall Data Quality Score: 42.1/100
+Overall Data Quality Score: 45.6/100
 
 Specific Data Quality Issues:
 - Impossible CTR Cases: 28 rows (0.37%)
-- Impossible Conversion Rate Cases: 2,662 rows (35.31%)
+- Impossible Conversion Rate Cases: 2,615 rows (34.68%)
 - Missing Platform Data: 1,300 rows (17.24%)
 - Extreme CTR Outliers: 28 rows (0.37%)
-- Extreme ROAS Outliers: 345 rows (4.58%)
-- Extreme CPA Outliers: 0 rows (0.00%)
+- Extreme ROAS Outliers: 66 rows (0.88%)
+- Extreme CPA Outliers: 62 rows (0.82%)
 
 Data Cleaning Actions Taken:
 - Fixed 28 impossible CTR cases by capping clicks at impression levels
-- Fixed 2,662 impossible conversion rate cases by capping conversions at click levels
+- Fixed 2,615 impossible conversion rate cases by capping conversions at click levels
 - Applied statistical outlier capping using IQR method for CTR, Conversion Rate, and ROAS
 - Filled missing platform data for traditional media channels
 
@@ -46,48 +46,48 @@ DETAILED CHANNEL PERFORMANCE ANALYSIS
 Channel Performance Breakdown:
 Channel: Paid Social
   - Spend: $9,678,997.63 (26.9% of total)
-  - Revenue: $66,225,698.75 (24.6% of total)
-  - ROAS: 6.84x
-  - CPA: $24.57
+  - Revenue: $24,007,065.59 (24.4% of total)
+  - ROAS: 2.48x
+  - CPA: $64.48
   - CTR: 2.04%
-  - Conversions: 393,930
+  - Conversions: 150,111
   - Impressions: 777,363,710
   - Clicks: 15,864,119
 
 Channel: OTT/OLV
   - Spend: $7,956,819.90 (22.1% of total)
-  - Revenue: $55,627,178.41 (20.7% of total)
-  - ROAS: 6.99x
-  - CPA: $19.92
+  - Revenue: $19,952,903.58 (20.3% of total)
+  - ROAS: 2.51x
+  - CPA: $51.44
   - CTR: 1.99%
-  - Conversions: 399,390
+  - Conversions: 154,681
   - Impressions: 787,102,133
   - Clicks: 15,670,934
 
 Channel: Paid Search
   - Spend: $3,874,775.18 (10.7% of total)
-  - Revenue: $44,500,730.62 (16.5% of total)
-  - ROAS: 11.48x
-  - CPA: $18.20
+  - Revenue: $16,604,071.14 (16.9% of total)
+  - ROAS: 4.29x
+  - CPA: $45.87
   - CTR: 1.98%
-  - Conversions: 212,922
+  - Conversions: 84,478
   - Impressions: 270,141,441
   - Clicks: 5,349,383
 
 Channel: Affiliate
   - Spend: $3,913,173.77 (10.9% of total)
-  - Revenue: $29,466,482.51 (10.9% of total)
-  - ROAS: 7.53x
-  - CPA: $18.27
+  - Revenue: $10,905,261.04 (11.1% of total)
+  - ROAS: 2.79x
+  - CPA: $48.19
   - CTR: 1.99%
-  - Conversions: 214,142
+  - Conversions: 81,202
   - Impressions: 388,909,215
   - Clicks: 7,754,985
 
 Channel: CTV
   - Spend: $3,729,677.68 (10.3% of total)
-  - Revenue: $25,099,808.27 (9.3% of total)
-  - ROAS: 6.73x
+  - Revenue: $9,245,027.41 (9.4% of total)
+  - ROAS: 2.48x
   - CPA: $inf
   - CTR: 0.00%
   - Conversions: 0
@@ -96,18 +96,18 @@ Channel: CTV
 
 Channel: Display
   - Spend: $3,190,315.36 (8.9% of total)
-  - Revenue: $21,399,212.26 (8.0% of total)
-  - ROAS: 6.71x
-  - CPA: $24.11
+  - Revenue: $7,767,323.45 (7.9% of total)
+  - ROAS: 2.43x
+  - CPA: $61.02
   - CTR: 1.99%
-  - Conversions: 132,342
+  - Conversions: 52,280
   - Impressions: 263,776,453
   - Clicks: 5,260,963
 
 Channel: Direct Mail
   - Spend: $2,481,691.87 (6.9% of total)
-  - Revenue: $18,367,606.36 (6.8% of total)
-  - ROAS: 7.40x
+  - Revenue: $6,726,955.21 (6.8% of total)
+  - ROAS: 2.71x
   - CPA: $inf
   - CTR: nan%
   - Conversions: 0
@@ -116,8 +116,8 @@ Channel: Direct Mail
 
 Channel: Radio
   - Spend: $809,949.54 (2.2% of total)
-  - Revenue: $5,543,761.54 (2.1% of total)
-  - ROAS: 6.84x
+  - Revenue: $2,050,401.25 (2.1% of total)
+  - ROAS: 2.53x
   - CPA: $inf
   - CTR: nan%
   - Conversions: 0
@@ -126,8 +126,8 @@ Channel: Radio
 
 Channel: TV
   - Spend: $412,205.91 (1.1% of total)
-  - Revenue: $2,873,951.65 (1.1% of total)
-  - ROAS: 6.97x
+  - Revenue: $1,089,691.33 (1.1% of total)
+  - ROAS: 2.64x
   - CPA: $inf
   - CTR: nan%
   - Conversions: 0
@@ -138,114 +138,114 @@ Channel: TV
 DETAILED SEGMENT PERFORMANCE ANALYSIS
 ================================================================================
 Segment: Local
-  - Revenue: $85,980,425.12 (32.0% of total)
-  - ROAS: 8.25x
-  - CPA: $36.45
+  - Revenue: $31,616,221.85 (32.1% of total)
+  - ROAS: 3.03x
+  - CPA: $95.58
   - CTR: 1.61%
-  - Conversions: 285,882
+  - Conversions: 109,012
   - Spend: $10,419,748.27
 
 Segment: Same Day
-  - Revenue: $68,204,131.44 (25.3% of total)
-  - ROAS: 7.55x
-  - CPA: $32.26
+  - Revenue: $24,871,834.58 (25.3% of total)
+  - ROAS: 2.75x
+  - CPA: $83.21
   - CTR: 1.74%
-  - Conversions: 280,148
+  - Conversions: 108,596
   - Spend: $9,036,682.39
 
 Segment: Drive & Overnight
-  - Revenue: $53,540,359.64 (19.9% of total)
-  - ROAS: 7.28x
-  - CPA: $26.23
+  - Revenue: $19,442,100.90 (19.8% of total)
+  - ROAS: 2.64x
+  - CPA: $67.30
   - CTR: 1.66%
-  - Conversions: 280,361
+  - Conversions: 109,262
   - Spend: $7,353,547.75
 
 Segment: Domestic
-  - Revenue: $36,202,740.58 (13.5% of total)
-  - ROAS: 6.63x
-  - CPA: $21.74
+  - Revenue: $13,071,755.16 (13.3% of total)
+  - ROAS: 2.39x
+  - CPA: $56.71
   - CTR: 1.61%
-  - Conversions: 251,221
+  - Conversions: 96,307
   - Spend: $5,461,932.77
 
 Segment: International
-  - Revenue: $25,176,773.59 (9.4% of total)
-  - ROAS: 6.67x
-  - CPA: $14.80
+  - Revenue: $9,346,787.51 (9.5% of total)
+  - ROAS: 2.48x
+  - CPA: $37.92
   - CTR: 1.70%
-  - Conversions: 255,114
+  - Conversions: 99,575
   - Spend: $3,775,695.66
 
 
 DETAILED PLATFORM PERFORMANCE ANALYSIS
 ================================================================================
 Platform: Google
-  - Revenue: $56,736,955.56 (23.7% of total)
-  - ROAS: 9.93x
-  - CPA: $20.59
-  - Conversions: 277,591
+  - Revenue: $21,101,746.96 (24.1% of total)
+  - ROAS: 3.69x
+  - CPA: $52.28
+  - Conversions: 109,328
   - Spend: $5,715,886.82
 
 Platform: Trade Desk
-  - Revenue: $37,484,408.08 (15.6% of total)
-  - ROAS: 7.05x
-  - CPA: $19.76
-  - Conversions: 269,281
+  - Revenue: $13,275,057.77 (15.2% of total)
+  - ROAS: 2.50x
+  - CPA: $50.71
+  - Conversions: 104,912
   - Spend: $5,319,979.44
 
 Platform: Facebook
-  - Revenue: $36,129,552.67 (15.1% of total)
-  - ROAS: 6.92x
-  - CPA: $26.52
-  - Conversions: 196,850
+  - Revenue: $13,087,438.32 (15.0% of total)
+  - ROAS: 2.51x
+  - CPA: $69.23
+  - Conversions: 75,394
   - Spend: $5,219,481.34
 
 Platform: Instagram
-  - Revenue: $30,096,146.08 (12.6% of total)
-  - ROAS: 6.75x
-  - CPA: $22.63
-  - Conversions: 197,080
+  - Revenue: $10,919,627.27 (12.5% of total)
+  - ROAS: 2.45x
+  - CPA: $59.69
+  - Conversions: 74,717
   - Spend: $4,459,516.29
 
 Platform: YouTube
-  - Revenue: $27,305,757.65 (11.4% of total)
-  - ROAS: 6.85x
-  - CPA: $20.15
-  - Conversions: 197,782
+  - Revenue: $9,947,493.44 (11.4% of total)
+  - ROAS: 2.50x
+  - CPA: $51.63
+  - Conversions: 77,199
   - Spend: $3,986,044.18
 
 Platform: Traditional Media
-  - Revenue: $18,367,606.36 (7.7% of total)
-  - ROAS: 7.40x
+  - Revenue: $6,726,955.21 (7.7% of total)
+  - ROAS: 2.71x
   - CPA: $inf
   - Conversions: 0
   - Spend: $2,481,691.87
 
 Platform: Hulu
-  - Revenue: $13,906,477.12 (5.8% of total)
-  - ROAS: 6.51x
+  - Revenue: $5,062,593.37 (5.8% of total)
+  - ROAS: 2.37x
   - CPA: $inf
   - Conversions: 0
   - Spend: $2,136,797.85
 
 Platform: Roku
-  - Revenue: $11,193,331.15 (4.7% of total)
-  - ROAS: 7.03x
+  - Revenue: $4,182,434.04 (4.8% of total)
+  - ROAS: 2.63x
   - CPA: $inf
   - Conversions: 0
   - Spend: $1,592,879.83
 
 Platform: Radio
-  - Revenue: $5,543,761.54 (2.3% of total)
-  - ROAS: 6.84x
+  - Revenue: $2,050,401.25 (2.3% of total)
+  - ROAS: 2.53x
   - CPA: $inf
   - Conversions: 0
   - Spend: $809,949.54
 
 Platform: Linear
-  - Revenue: $2,873,951.65 (1.2% of total)
-  - ROAS: 6.97x
+  - Revenue: $1,089,691.33 (1.2% of total)
+  - ROAS: 2.64x
   - CPA: $inf
   - Conversions: 0
   - Spend: $412,205.91
@@ -255,157 +255,157 @@ FUNNEL STAGE PERFORMANCE ANALYSIS
 ================================================================================
 Funnel Stage: Awareness
   - Spend: $12,982,454.44 (36.0% of total)
-  - Revenue: $89,320,444.24
-  - ROAS: 6.88x
-  - CPA: $27.78
-  - Conversions: 467,290
+  - Revenue: $32,541,859.92
+  - ROAS: 2.51x
+  - CPA: $72.13
+  - Conversions: 179,984
 
 Funnel Stage: Consideration
   - Spend: $12,455,197.49 (34.6% of total)
-  - Revenue: $96,869,828.41
-  - ROAS: 7.78x
-  - CPA: $28.16
-  - Conversions: 442,248
+  - Revenue: $35,515,521.13
+  - ROAS: 2.85x
+  - CPA: $72.93
+  - Conversions: 170,779
 
 Funnel Stage: Conversion
   - Spend: $10,609,954.91 (29.4% of total)
-  - Revenue: $82,914,157.72
-  - ROAS: 7.81x
-  - CPA: $23.94
-  - Conversions: 443,188
+  - Revenue: $30,291,318.95
+  - ROAS: 2.85x
+  - CPA: $61.69
+  - Conversions: 171,989
 
 
 COMPREHENSIVE MONTHLY PERFORMANCE ANALYSIS
 ================================================================================
 Month: January
-  - Revenue: $27,232,670.86
+  - Revenue: $11,374,300.00
   - Spend: $3,546,886.41
-  - ROAS: 7.68x
-  - CPA: $27.58
+  - ROAS: 3.21x
+  - CPA: $56.75
   - CTR: 1.63%
-  - Conversions: 128,623
+  - Conversions: 62,495
 
 Month: February
-  - Revenue: $20,022,636.64 (-26.5% MoM)
+  - Revenue: $8,628,700.00 (-24.1% MoM)
   - Spend: $2,855,061.38
-  - ROAS: 7.01x (-0.66x MoM)
-  - CPA: $27.93
+  - ROAS: 3.02x (-0.18x MoM)
+  - CPA: $64.92
   - CTR: 1.62%
-  - Conversions: 102,209
+  - Conversions: 43,976
 
 Month: March
-  - Revenue: $18,840,731.05 (-5.9% MoM)
+  - Revenue: $6,186,000.00 (-28.3% MoM)
   - Spend: $2,708,004.10
-  - ROAS: 6.96x (-0.06x MoM)
-  - CPA: $26.55
+  - ROAS: 2.28x (-0.74x MoM)
+  - CPA: $89.59
   - CTR: 1.65%
-  - Conversions: 101,983
+  - Conversions: 30,227
 
 Month: April
-  - Revenue: $26,723,428.18 (+41.8% MoM)
+  - Revenue: $9,060,800.00 (+46.5% MoM)
   - Spend: $3,502,291.08
-  - ROAS: 7.63x (+0.67x MoM)
-  - CPA: $26.31
+  - ROAS: 2.59x (+0.30x MoM)
+  - CPA: $72.89
   - CTR: 1.72%
-  - Conversions: 133,093
+  - Conversions: 48,048
 
 Month: May
-  - Revenue: $20,760,677.25 (-22.3% MoM)
+  - Revenue: $9,597,400.00 (+5.9% MoM)
   - Spend: $2,823,682.71
-  - ROAS: 7.35x (-0.28x MoM)
-  - CPA: $27.60
+  - ROAS: 3.40x (+0.81x MoM)
+  - CPA: $53.64
   - CTR: 1.59%
-  - Conversions: 102,315
+  - Conversions: 52,643
 
 Month: June
-  - Revenue: $21,161,386.33 (+1.9% MoM)
+  - Revenue: $6,356,400.00 (-33.8% MoM)
   - Spend: $2,658,261.15
-  - ROAS: 7.96x (+0.61x MoM)
-  - CPA: $24.77
+  - ROAS: 2.39x (-1.01x MoM)
+  - CPA: $84.40
   - CTR: 1.65%
-  - Conversions: 107,299
+  - Conversions: 31,497
 
 Month: July
-  - Revenue: $25,823,734.78 (+22.0% MoM)
+  - Revenue: $8,061,900.00 (+26.8% MoM)
   - Spend: $3,446,932.46
-  - ROAS: 7.49x (-0.47x MoM)
-  - CPA: $26.86
+  - ROAS: 2.34x (-0.05x MoM)
+  - CPA: $78.37
   - CTR: 1.70%
-  - Conversions: 128,351
+  - Conversions: 43,982
 
 Month: August
-  - Revenue: $20,463,948.15 (-20.8% MoM)
+  - Revenue: $7,288,200.00 (-9.6% MoM)
   - Spend: $2,719,894.60
-  - ROAS: 7.52x (+0.03x MoM)
-  - CPA: $25.86
+  - ROAS: 2.68x (+0.34x MoM)
+  - CPA: $70.76
   - CTR: 1.68%
-  - Conversions: 105,180
+  - Conversions: 38,440
 
 Month: September
-  - Revenue: $25,310,474.56 (+23.7% MoM)
+  - Revenue: $7,875,400.00 (+8.1% MoM)
   - Spend: $3,518,735.68
-  - ROAS: 7.19x (-0.33x MoM)
-  - CPA: $27.36
+  - ROAS: 2.24x (-0.44x MoM)
+  - CPA: $86.47
   - CTR: 1.63%
-  - Conversions: 128,589
+  - Conversions: 40,692
 
 Month: October
-  - Revenue: $20,588,081.63 (-18.7% MoM)
+  - Revenue: $6,355,100.00 (-19.3% MoM)
   - Spend: $2,781,989.65
-  - ROAS: 7.40x (+0.21x MoM)
-  - CPA: $27.16
+  - ROAS: 2.28x (+0.05x MoM)
+  - CPA: $83.25
   - CTR: 1.73%
-  - Conversions: 102,416
+  - Conversions: 33,418
 
 Month: November
-  - Revenue: $20,947,311.36 (+1.7% MoM)
+  - Revenue: $8,639,500.00 (+35.9% MoM)
   - Spend: $2,709,246.44
-  - ROAS: 7.73x (+0.33x MoM)
-  - CPA: $25.34
+  - ROAS: 3.19x (+0.90x MoM)
+  - CPA: $56.98
   - CTR: 1.70%
-  - Conversions: 106,905
+  - Conversions: 47,544
 
 Month: December
-  - Revenue: $21,229,349.58 (+1.3% MoM)
+  - Revenue: $8,925,000.00 (+3.3% MoM)
   - Spend: $2,776,621.18
-  - ROAS: 7.65x (-0.09x MoM)
-  - CPA: $26.25
+  - ROAS: 3.21x (+0.03x MoM)
+  - CPA: $55.77
   - CTR: 1.63%
-  - Conversions: 105,763
+  - Conversions: 49,790
 
 
 SEASONALITY AND TREND INSIGHTS
 ================================================================================
 Peak Performance Month: January
-  - Revenue: $27,232,670.86
-  - ROAS: 7.68x
+  - Revenue: $11,374,300.00
+  - ROAS: 3.21x
 
 Low Performance Month: March
-  - Revenue: $18,840,731.05
-  - ROAS: 6.96x
+  - Revenue: $6,186,000.00
+  - ROAS: 2.28x
 
-Revenue Seasonality Index: 13.1%
-Year-over-Year Growth Trend: -0.3%
+Revenue Seasonality Index: 18.6%
+Year-over-Year Growth Trend: -7.9%
 
 Quarterly Channel Performance:
-Q1: Paid Search performs best (12.18x ROAS)
-Q2: Paid Search performs best (11.26x ROAS)
-Q3: Paid Search performs best (11.35x ROAS)
-Q4: Paid Search performs best (11.15x ROAS)
+Q1: Paid Search performs best (4.89x ROAS)
+Q2: Paid Search performs best (4.25x ROAS)
+Q3: Paid Search performs best (3.66x ROAS)
+Q4: Paid Search performs best (4.44x ROAS)
 
 
 OPTIMIZATION OPPORTUNITIES
 ================================================================================
 UNDERPERFORMING AREAS (Reduce Spend):
-- Paid Social - Same Day: $2,518,610 spend, 8.56x ROAS, $59.33 CPA
-- Paid Social - Domestic: $1,467,227 spend, 8.30x ROAS, $33.44 CPA
+- Paid Social - Same Day: $2,518,610 spend, 3.05x ROAS, $182.67 CPA
+- Paid Social - Domestic: $1,467,227 spend, 2.93x ROAS, $97.58 CPA
 
 SCALE-UP OPPORTUNITIES (Increase Spend):
-- OTT/OLV - International: 9.47x ROAS, $17.46 CPA, $799,850 current spend
-- Affiliate - International: 9.69x ROAS, $17.34 CPA, $425,583 current spend
-- Affiliate - Domestic: 10.23x ROAS, $24.01 CPA, $601,675 current spend
-- Paid Social - International: 8.95x ROAS, $24.32 CPA, $989,879 current spend
-- Display - International: 8.23x ROAS, $24.96 CPA, $358,772 current spend
+- OTT/OLV - International: 3.40x ROAS, $54.26 CPA, $799,850 current spend
+- Affiliate - International: 3.53x ROAS, $53.05 CPA, $425,583 current spend
+- Affiliate - Domestic: 3.67x ROAS, $79.79 CPA, $601,675 current spend
+- Paid Social - International: 3.24x ROAS, $79.25 CPA, $989,879 current spend
+- Display - International: 3.02x ROAS, $81.27 CPA, $358,772 current spend
 
 
 STRATEGIC RECOMMENDATIONS FOR BUSCH GARDENS TAMPA BAY
@@ -413,26 +413,26 @@ STRATEGIC RECOMMENDATIONS FOR BUSCH GARDENS TAMPA BAY
 
 IMMEDIATE ACTIONS (Next 30 Days):
 1. Data Infrastructure - Implement validation rules to prevent impossible metrics
-   - Target: Reduce data quality issues from 57.9% to <5%
+   - Target: Reduce data quality issues from 54.4% to <5%
    - ROI Impact: Improved measurement accuracy worth estimated $720,952 in optimization potential
 
 2. Budget Reallocation - Shift spend from underperforming combinations
    - Reallocate $996,459 from low-ROAS channels
-   - Expected Revenue Lift: $11,158,226
+   - Expected Revenue Lift: $4,077,960
 
 3. Scale High-Performing Platforms
    - Increase spend on top-performing platform combinations by 20%
-   - Expected Additional Revenue: $14,782,443
+   - Expected Additional Revenue: $5,309,094
 
 SHORT-TERM OPTIMIZATIONS (Next 90 Days):
 1. Funnel Balance Optimization
    - Current funnel spend distribution needs rebalancing
    - Increase consideration stage investment by 15%
-   - Expected ROAS improvement: +1.2x
+   - Expected ROAS improvement: +0.4x
 
 2. Segment-Specific Strategies
-   - Focus on Local segment (highest revenue share: 32.0%)
-   - Optimize International segment (lowest CPA: $14.80)
+   - Focus on Local segment (highest revenue share: 32.1%)
+   - Optimize International segment (lowest CPA: $37.92)
 
 LONG-TERM STRATEGIC INITIATIVES (Next 12 Months):
 1. Advanced Attribution Modeling
@@ -443,13 +443,13 @@ LONG-TERM STRATEGIC INITIATIVES (Next 12 Months):
 KEY PERFORMANCE INDICATORS TO TRACK:
 ================================================================================
 Primary KPIs:
-- ROAS (Current: 7.47x, Target: 8.96x)
-- CPA (Current: $26.65, Target: $22.65)
+- ROAS (Current: 2.73x, Target: 3.27x)
+- CPA (Current: $68.96, Target: $58.61)
 - Revenue Growth (Monthly target: +15%)
 
 Quality KPIs:
-- Data Accuracy Score (Current: 42.1%, Target: >95%)
-- Outlier Percentage (Current: 57.9%, Target: <5%)
+- Data Accuracy Score (Current: 45.6%, Target: >95%)
+- Outlier Percentage (Current: 54.4%, Target: <5%)
 
 Efficiency KPIs:
 - CTR by Channel (Current range: 0.00% - 2.04%)

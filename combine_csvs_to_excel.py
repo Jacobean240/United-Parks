@@ -174,7 +174,7 @@ def main():
     
     # Combine CSVs to Excel
     park_prefix = "busch_gardens_tampa_bay"
-    source_directory = "Busg Gardens"
+    source_directory = "Monthly"
     success = combine_csvs_to_excel(park_prefix=park_prefix, source_directory=source_directory)
     
     if success:
